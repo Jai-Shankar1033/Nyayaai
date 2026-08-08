@@ -18,7 +18,7 @@
 [![Ollama](https://img.shields.io/badge/Ollama-Llama_3-FF6B35)](https://ollama.ai)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow)](LICENSE)
 
-[Live Demo](#) · [Architecture](#architecture) · [Setup](#local-setup) · [API Docs](#api-docs) · [Roadmap](#roadmap)
+[Live Demo](https://drive.google.com/drive/folders/1zXBMFOl5xDNNclCa8bs-bhDoOzhVEX3l?usp=drive_link) · [Architecture](#architecture) · [Setup](#local-setup) · [API Docs](#api-docs) · [Roadmap](#roadmap)
 
 <br/>
 
@@ -28,7 +28,7 @@
 </div>
 
 ---
-
+## LIVE VIDEO (https://drive.google.com/drive/folders/1zXBMFOl5xDNNclCa8bs-bhDoOzhVEX3l?usp=drive_link)
 ## What is NyayaAI?
 
 India has **5 crore+ pending cases**, most citizens **don't understand legal language**, and lawyers **manually search thousands of judgments**. NyayaAI fixes all three.
