@@ -1,0 +1,32 @@
+﻿import { createServerClient } from "@supabase/ssr"
+import { NextResponse, type NextRequest } from "next/server"
+
+export async function updateSession(request: NextRequest) {
+  let supabaseResponse = NextResponse.next({ request })
+  const supabase = createServerClient(
+    process.env.NEXT_PUBLIC_SUPABASE_URL!,
+    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
+    {
+      cookies: {
+        getAll() { return request.cookies.getAll() },
+        setAll(cookiesToSet) {
+          cookiesToSet.forEach(({ name, value }) => request.cookies.set(name, value))
+          supabaseResponse = NextResponse.next({ request })
+          cookiesToSet.forEach(({ name, value, options }) =>
+            supabaseResponse.cookies.set(name, value, options)
+          )
+        },
+      },
+    }
+  )
+  const { data: { user } } = await supabase.auth.getUser()
+  const isAuthRoute = request.nextUrl.pathname.startsWith("/login") || request.nextUrl.pathname.startsWith("/signup")
+  const isDashboardRoute = request.nextUrl.pathname.startsWith("/citizen") || request.nextUrl.pathname.startsWith("/lawyer")
+  if (!user && isDashboardRoute) return NextResponse.redirect(new URL("/login", request.url))
+  if (user && isAuthRoute) {
+    const profile = await supabase.from("profiles").select("role").eq("id", user.id).single()
+    const role = profile.data?.role ?? "citizen"
+    return NextResponse.redirect(new URL(`/${role}`, request.url))
+  }
+  return supabaseResponse
+}
