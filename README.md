@@ -291,7 +291,7 @@ NyayaAI provides **legal information**, not legal advice. Always consult a quali
 
 ## License
 
-MIT © 2024 NyayaAI
+MIT © 2026 NyayaAI(JAI SHANKAR)
 
 ---
 
